@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "ownwnaddons",
+	"version": "${version}",
+	"name": "OwnwnAddons Fabric",
+	"description": "A utilities mod for Hypixel Skyblock",
+	"authors": [
+		"Ownwn"
+	],
+	"contact": {
+		"homepage": "https://github.com/Ownwn",
+		"sources": "https://github.com/Ownwn/OwnwnAddons-Fabric"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/ownwnaddons/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.ownwn.OwnwnAddons"
+		],
+		"modmenu": [
+			"com.ownwn.config.ModMenu"
+		]
+	},
+	"mixins": [
+		"ownwnaddons.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
