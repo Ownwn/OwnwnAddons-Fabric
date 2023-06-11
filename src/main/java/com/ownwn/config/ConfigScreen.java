@@ -22,7 +22,7 @@ public class ConfigScreen extends Screen {
         int buttonWidth = 140;
         int buttonHeight = 20;
         int buttonGap = 5;
-        int totalButtonHeight = (buttonHeight + buttonGap) * 12 - buttonGap; // Total height of all buttons including gaps
+        int totalButtonHeight = (buttonHeight + buttonGap) * 12 - buttonGap; // total height of all buttons including gaps
         int startX = (this.width - buttonWidth) / 2; // X-coordinate for the buttons
         int startY = (this.height - totalButtonHeight) / 2; // Y-coordinate for the buttons
 

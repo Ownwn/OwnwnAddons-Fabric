@@ -1,21 +1,11 @@
 package com.ownwn.mixin;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.hud.ChatHudLine;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.CharacterVisitor;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.OrderedText;
-import net.minecraft.text.Text;
 import org.joml.Matrix4f;
-import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TextRenderer.class)
@@ -94,6 +84,8 @@ public abstract class TextRendererMixin {
 ////        cir.cancel();
 //    }
 
+
+    //how the hell are you supposed to modify OrderedText
     @Inject(method = "draw(Lnet/minecraft/text/OrderedText;FFILorg/joml/Matrix4f;Z)I", at = @At("HEAD"), cancellable = true)
     private void beforeDrawInternal(OrderedText text, float x, float y, int color, Matrix4f matrix, boolean shadow, CallbackInfoReturnable<Integer> cir) {
 //        VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());

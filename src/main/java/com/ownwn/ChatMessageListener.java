@@ -1,11 +1,10 @@
 package com.ownwn;
 
 import com.google.common.eventbus.Subscribe;
+import com.ownwn.config.NewConfig;
 import com.ownwn.event.ReceiveChatEvent;
 import com.ownwn.event.SendChatEvent;
-import com.ownwn.config.NewConfig;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
+import com.ownwn.utils.UChat;
 
 public class ChatMessageListener {
 
@@ -14,18 +13,21 @@ public class ChatMessageListener {
 
 //        MinecraftClient.getInstance().player.sendMessage(Text.of("Sent:" + event.message()));
         if (event.message().equals(".toggle")) {
-            boolean testing = false;
-            boolean testing2 = true;
-//            ConfigUtils.configMap.put("test", testing);
-//            ConfigUtils.configMap.put("test2", testing2);
+
             if (NewConfig.optionFour.getValue()) {
-                MinecraftClient.getInstance().player.sendMessage(Text.of("its on!"));
+                UChat.chat("its off");
             } else {
-                MinecraftClient.getInstance().player.sendMessage(Text.of("its off!"));
+                UChat.chat("its off");
             }
 
         } else if (event.message().equals(".test")) {
-//            ConfigOption.optionThree.setValue(!ConfigOption.optionThree.getValue());
+
+            UChat.chat(NewConfig.optionFour.getValue());
+            UChat.chat(NewConfig.hideExplosionParticles.getValue());
+
+
+
+
 
         }
     }
@@ -37,8 +39,4 @@ public class ChatMessageListener {
         }
     }
 
-    @Subscribe
-    public void onChatTwo(ReceiveChatEvent event) {
-//        MinecraftClient.getInstance().player.sendMessage(Text.empty().append("Received 2: ").append(event.message()));
-    }
 }

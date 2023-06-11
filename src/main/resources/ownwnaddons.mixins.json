@@ -8,7 +8,8 @@
 		"ClientWorldMixin",
 		"DownloadingTerrainScreenMixin",
 		"MinecraftClientMixin",
-		"TextRendererMixin"
+		"TextRendererMixin",
+		"ChatHudMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

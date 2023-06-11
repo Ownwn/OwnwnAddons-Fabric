@@ -1,6 +1,6 @@
 package com.ownwn;
 
-import com.ownwn.config.NewConfig;
+import com.ownwn.config.PersistentConfig;
 import com.ownwn.event.EventBus;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class OwnwnAddons implements ModInitializer {
-    public static final String PREFIX = "§d<§aOWA§d>§r ";
+//    public static final String PREFIX = "§d<§aOWA§d>§r ";
     // This logger is used to write text to the console and the log file.
     // It is considered best practice to use your mod id as the logger's name.
     // That way, it's clear which mod wrote info, warnings, and errors.
@@ -22,7 +22,8 @@ public class OwnwnAddons implements ModInitializer {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
-        NewConfig.registerConfig();
+        PersistentConfig.checkConfigFile();
+
         EVENT_BUS.register(new ChatMessageListener());
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
 
