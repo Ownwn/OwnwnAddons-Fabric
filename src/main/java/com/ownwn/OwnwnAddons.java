@@ -1,33 +1,40 @@
 package com.ownwn;
 
-import com.ownwn.config.PersistentConfig;
-import com.ownwn.event.EventBus;
+import com.ownwn.config.Config;
+import com.ownwn.features.CustomName;
+import com.ownwn.features.ReplaceTooltip;
+import com.ownwn.utils.TextUtils;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import meteordevelopment.orbit.EventBus;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.minecraft.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.invoke.MethodHandles;
+
 public class OwnwnAddons implements ModInitializer {
-//    public static final String PREFIX = "§d<§aOWA§d>§r ";
-    // This logger is used to write text to the console and the log file.
-    // It is considered best practice to use your mod id as the logger's name.
-    // That way, it's clear which mod wrote info, warnings, and errors.
     public static final Logger LOGGER = LoggerFactory.getLogger("ownwnaddons");
 
+    public static Text Prefix() {
+        return TextUtils.dynamicTextSpectrum("<OWA>");
+    }
 
-    public static final EventBus EVENT_BUS = new EventBus();
+    public static EventBus EVENT_BUS = new EventBus();
 
     @Override
     public void onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
-        PersistentConfig.checkConfigFile();
 
-        EVENT_BUS.register(new ChatMessageListener());
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, access) -> ConfigCommand.register(dispatcher) );
+        AutoConfig.register(Config.class, GsonConfigSerializer::new);
 
-        });
+
+        EVENT_BUS.registerLambdaFactory("com.ownwn", (lookupInMethod, klass) -> (MethodHandles.Lookup) lookupInMethod.invoke(null, klass, MethodHandles.lookup()));
+        EVENT_BUS.subscribe(ConfigCommand.class);
+        EVENT_BUS.subscribe(CustomName.class);
+        EVENT_BUS.subscribe(ReplaceTooltip.class);
     }
 
 }

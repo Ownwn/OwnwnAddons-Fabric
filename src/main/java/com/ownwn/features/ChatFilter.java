@@ -1,18 +1,21 @@
 package com.ownwn.features;
 
 
+import com.ownwn.config.Config;
 import net.minecraft.text.Text;
 
 public class ChatFilter {
 
     public static boolean shouldBlockMessage(Text message) {
         String string = message.getString();
-        return string.contains("bad word");
-    }
+        if (string.contains("block this word! sdnfgsdngg")) {
+            return true;
+        }
 
-    public static boolean shouldBlockMessage(String message) {
-        return message.contains("aa");
+        if (Config.get().hideEmptyMessages) {
+            return (string.trim().isEmpty());
+        }
+        return false;
     }
-
     
 }

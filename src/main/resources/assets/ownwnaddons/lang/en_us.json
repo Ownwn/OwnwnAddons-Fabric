@@ -1,0 +1,13 @@
+{
+  "text.autoconfig.ownwnaddons.title": "OwnwnAddons",
+  "text.autoconfig.ownwnaddons.option.hideExplosionParticles": "Hide Explosion Particles",
+  "text.autoconfig.ownwnaddons.option.hideEmptyMessages": "Hide Empty messages",
+  "text.autoconfig.ownwnaddons.option.preventSellingKismets": "Prevent Selling Kismets",
+  "text.autoconfig.ownwnaddons.option.customNameToggle": "Custom Name Toggle",
+  "text.autoconfig.ownwnaddons.option.customNameString": "Custom Name",
+  "text.autoconfig.ownwnaddons.option.customNameColour": "Custom Name Colour",
+  "text.autoconfig.ownwnaddons.option.nameType": "Name Type",
+  "text.autoconfig.ownwnaddons.option.nameType.value.solid_colour": "Solid Colour",
+  "text.autoconfig.ownwnaddons.option.nameType.value.colour_spectrum": "Colour Spectrum"
+
+}

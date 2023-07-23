@@ -1,12 +1,17 @@
 package com.ownwn.config;
 
+
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
+import me.shedaniel.autoconfig.AutoConfig;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
+@Environment(EnvType.CLIENT)
 public class ModMenu implements ModMenuApi {
-    // this class exists so that you can open the gui from the ModMenu mod. look at the "Modmenu" entrypoint in fabric.mod.json
+
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return ConfigScreen::new;
+        return parent -> AutoConfig.getConfigScreen(Config.class, parent).get();
     }
 }
