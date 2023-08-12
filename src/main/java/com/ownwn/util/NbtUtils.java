@@ -1,4 +1,4 @@
-package com.ownwn.utils;
+package com.ownwn.util;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -11,8 +11,8 @@ public class NbtUtils {
     public static final byte STRING_BYTE = 8;
 
 
-    public static boolean checkMatch(NbtCompound nbt, String checkString) {
-
+    public static boolean checkNameMatch(NbtCompound nbt, String checkString) {
+        // checks if an item's lore contains a string
 
         if (!nbt.contains("display")) {
             return false;
@@ -34,6 +34,15 @@ public class NbtUtils {
             }
             return true;
 
+        }
+        return false;
+    }
+    public static boolean checkBazaarMatch(NbtCompound nbt, String[] checkString) {
+        for (String itemName : checkString) {
+            itemName = "x " + itemName + " for "; // e.g. 5x itemName for 528,038 coins
+            if (checkNameMatch(nbt, itemName)) {
+                return true;
+            }
         }
         return false;
     }

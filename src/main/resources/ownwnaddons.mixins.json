@@ -4,12 +4,12 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ClientConnectionMixin",
-		"ClientWorldMixin",
 		"ChatHudMixin",
 		"ChestScreenMixin",
 		"InGameHudMixin",
 		"DrawContextMixin",
-		"PlayerListHudMixin"
+		"PlayerListHudMixin",
+        "CloseScreenS2CPacketMixin"
 
 	],
 	"injectors": {

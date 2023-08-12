@@ -7,10 +7,14 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @me.shedaniel.autoconfig.annotation.Config(name = "ownwnaddons")
 public class Config implements ConfigData {
-    public boolean hideExplosionParticles = false;
     public boolean hideEmptyMessages = false;
+    public boolean dungeonChatCleanup = false;
+    public boolean bazaarChatCleanup = false;
+    public boolean doNotCloseChat = false;
 
-    public boolean preventSellingKismets = false;
+    public boolean preventSellingDungeons = false;
+    public boolean preventSellingPearls = false;
+
     public boolean customNameToggle = false;
     public String customNameString = "custom name";
 

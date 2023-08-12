@@ -1,14 +1,19 @@
-package com.ownwn.features;
+package com.ownwn.feature;
 
 import com.ownwn.config.Config;
-import com.ownwn.utils.NbtUtils;
+import com.ownwn.util.NbtUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 
 public class CancelBazaarClicks {
+    public static String[] dungeonItems = {
+            "Kismet Feather",
+            "Superboom TNT",
+            "Spirit Leap"
+    };
+
     public static boolean shouldCancelClick(Slot slot) {
-        // TODO: finish this
-        if (!Config.get().preventSellingKismets) {
+        if (!Config.get().preventSellingDungeons && !Config.get().preventSellingPearls) {
             return false;
         }
         if (slot == null || slot.getStack() == null) {
@@ -21,6 +26,10 @@ public class CancelBazaarClicks {
         if (!item.hasNbt() || item.getNbt() == null) {
             return false;
         }
-        return NbtUtils.checkMatch(item.getNbt(), "asda");
+
+        if (Config.get().preventSellingPearls && NbtUtils.checkNameMatch(item.getNbt(), "x Ender Pearl for ")) {
+            return true;
+        }
+        return Config.get().preventSellingDungeons && NbtUtils.checkBazaarMatch(item.getNbt(), dungeonItems);
     }
 }

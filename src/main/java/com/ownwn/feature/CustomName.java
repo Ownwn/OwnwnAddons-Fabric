@@ -1,20 +1,23 @@
-package com.ownwn.features;
+package com.ownwn.feature;
 
 import com.ownwn.config.Config;
-import com.ownwn.event.ChatHudEvent;
-import com.ownwn.utils.TextUtils;
+import com.ownwn.event.ChatEvent;
+import com.ownwn.event.DrawTooltipEvent;
+import com.ownwn.util.TextUtils;
 import meteordevelopment.orbit.EventHandler;
+import meteordevelopment.orbit.EventPriority;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.PlayerListEntry;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomName {
 
-    @EventHandler
-    public static void onChatHud(ChatHudEvent event) {
+    @EventHandler(priority = EventPriority.LOW)
+    public static void onChatHud(ChatEvent.ModifyEvent event) {
         if (!Config.get().customNameToggle) {
             return;
         }
@@ -36,7 +39,7 @@ public class CustomName {
 
 
         // TODO: Make this work :(
-        assert MinecraftClient.getInstance().player != null;
+        assert MinecraftClient.getInstance().player  != null;
         for (PlayerListEntry entry : originalList) {
 
             if (!entry.getProfile().getName().contains(MinecraftClient.getInstance().player.getName().getString())) {
@@ -48,4 +51,22 @@ public class CustomName {
 
         }
         return originalList;
-    }}
+    }
+
+    @EventHandler
+    public static void drawTooltip(DrawTooltipEvent event) {
+
+        List<Text> newList = new ArrayList<>();
+        assert MinecraftClient.getInstance().player != null;
+        Text playerName = MinecraftClient.getInstance().player.getName();
+
+        for (Text insideText : event.getText()) {
+            insideText = TextUtils.modifyText(insideText, playerName, TextUtils.dynamicTextSpectrum(Config.get().customNameString));
+            newList.add(insideText);
+        }
+
+        event.setText(newList);
+    }
+}
+
+

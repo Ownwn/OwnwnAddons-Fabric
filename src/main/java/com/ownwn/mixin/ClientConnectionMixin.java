@@ -1,7 +1,8 @@
 package com.ownwn.mixin;
 
-import com.ownwn.event.ClientSpeakEvent;
 import com.ownwn.OwnwnAddons;
+import com.ownwn.event.ClientSpeakEvent;
+import com.ownwn.feature.DevTesting;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.PacketCallbacks;
 import net.minecraft.network.packet.Packet;
@@ -15,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientConnectionMixin {
 	@Inject(method = "sendImmediately", at = @At("HEAD"), cancellable = true)
 	public void onSendPacket(Packet<?> packet, PacketCallbacks callbacks, CallbackInfo ci) { // called when the player sends something to the chat
+		DevTesting.test(packet);
 		if (!(packet instanceof ChatMessageC2SPacket messagePacket)) {
 			return;
 		}

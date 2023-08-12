@@ -1,7 +1,7 @@
 package com.ownwn.mixin;
 
 
-import com.ownwn.features.CustomName;
+import com.ownwn.feature.CustomName;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.PlayerListHud;
 import net.minecraft.client.network.PlayerListEntry;

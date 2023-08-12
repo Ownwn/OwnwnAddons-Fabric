@@ -1,4 +1,4 @@
-package com.ownwn.utils;
+package com.ownwn.util;
 
 public class Utils {
     public static String capitalString(String string) { // capitalise a string

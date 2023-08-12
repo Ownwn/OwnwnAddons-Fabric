@@ -20,7 +20,7 @@
 		],
 		"modmenu": [
 			"com.ownwn.config.ModMenu"
-			]
+		]
 	},
 	"mixins": [
 		"ownwnaddons.mixins.json"

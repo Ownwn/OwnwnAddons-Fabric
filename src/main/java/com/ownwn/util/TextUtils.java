@@ -1,4 +1,4 @@
-package com.ownwn.utils;
+package com.ownwn.util;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.ownwn.OwnwnAddons;
