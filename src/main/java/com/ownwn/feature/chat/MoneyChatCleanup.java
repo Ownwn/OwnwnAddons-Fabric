@@ -14,7 +14,7 @@ public class MoneyChatCleanup {
         String message = event.getString();
 
         if (bazaarMessages(message) || bankMessages(message)) {
-            event.setCancelled(true);
+            event.cancel();
         }
     }
 

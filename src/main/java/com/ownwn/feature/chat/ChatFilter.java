@@ -11,7 +11,7 @@ public class ChatFilter {
     @EventHandler(priority = EventPriority.LOW)
     public static void onChat(ChatEvent.CancelEvent event) {
         if (Config.get().hideEmptyMessages && event.getString().trim().isEmpty()) {
-            event.setCancelled(true);
+            event.cancel();
         }
     }
     

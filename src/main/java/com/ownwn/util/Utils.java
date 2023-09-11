@@ -9,4 +9,8 @@ public class Utils {
         String string = String.valueOf(bool);
         return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
+
+    public static String removeLegacyFormatting(String string) {
+        return string.replaceAll("§.", "");
+    }
 }

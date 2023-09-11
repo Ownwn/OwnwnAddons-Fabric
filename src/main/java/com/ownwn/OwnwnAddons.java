@@ -3,8 +3,11 @@ package com.ownwn;
 import com.ownwn.command.MainCommand;
 import com.ownwn.config.Config;
 import com.ownwn.event.FabricEventHandler;
+import com.ownwn.feature.CancelBazaarClicks;
 import com.ownwn.feature.CustomName;
 import com.ownwn.feature.DevTesting;
+import com.ownwn.feature.WaterSolver;
+import com.ownwn.feature.chat.MiscChatFilters;
 import com.ownwn.feature.chat.MoneyChatCleanup;
 import com.ownwn.feature.chat.ChatFilter;
 import com.ownwn.feature.chat.DungeonChatFilter;
@@ -41,6 +44,9 @@ public class OwnwnAddons implements ModInitializer {
         EVENT_BUS.subscribe(ChatFilter.class);
         EVENT_BUS.subscribe(DevTesting.class);
         EVENT_BUS.subscribe(DungeonChatFilter.class);
+        EVENT_BUS.subscribe(MiscChatFilters.class);
+        EVENT_BUS.subscribe(WaterSolver.class);
+        EVENT_BUS.subscribe(CancelBazaarClicks.class);
     }
 
 }

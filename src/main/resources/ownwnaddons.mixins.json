@@ -5,10 +5,9 @@
 	"mixins": [
 		"ClientConnectionMixin",
 		"ChatHudMixin",
-		"ChestScreenMixin",
+      	"HandledScreenMixin",
 		"InGameHudMixin",
 		"DrawContextMixin",
-		"PlayerListHudMixin",
         "CloseScreenS2CPacketMixin"
 
 	],

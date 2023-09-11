@@ -19,7 +19,8 @@ public class DevTesting {
     public static List<Text> chatList = new ArrayList<>();
 
     @EventHandler
-    public static void onTick(ClientTickEvent event) {
+    public static void onTick(ClientTickEvent.TickClassic event) {
+        if (true) return;
         if (!devMode) return;
 
         for (Text text : chatList) {

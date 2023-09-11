@@ -6,6 +6,7 @@ import com.mojang.brigadier.tree.ArgumentCommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.ownwn.config.Config;
 import com.ownwn.feature.DevTesting;
+import com.ownwn.feature.WaterSolver;
 import com.ownwn.util.Chat;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
@@ -33,6 +34,16 @@ public class MainCommand {
                 .build();
 
 
+        LiteralCommandNode<FabricClientCommandSource> waterMode = ClientCommandManager
+                .literal("water")
+                .executes(context -> {
+                    WaterSolver.water = true;
+                    Chat.prefixInfo("done");
+                    return 1;
+                })
+                .build();
+
+
         LiteralCommandNode<FabricClientCommandSource> previewCommand = ClientCommandManager
                 .literal("preview")
                 .build();
@@ -49,6 +60,7 @@ public class MainCommand {
 
 
         guiCommand.addChild(devMode);
+        guiCommand.addChild(waterMode);
         guiCommand.addChild(previewCommand);
         dispatcher.getRoot().addChild(guiCommand);    // register command
     }
