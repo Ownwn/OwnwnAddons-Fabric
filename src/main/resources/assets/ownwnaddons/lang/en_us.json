@@ -1,33 +1,23 @@
 {
-  "yacl3.config.ownwnaddons:config.category.custom_name": "Custom Name",
-  "yacl3.config.ownwnaddons:config.category.chroma": "Chroma",
-
-
-  "yacl3.config.ownwnaddons:config.nameColour":  "Name Colour",
-  "yacl3.config.ownwnaddons:config.nameColour.desc":  "Static colour of your name",
-
-  "yacl3.config.ownwnaddons:config.customName":  "Custom Name",
-  "yacl3.config.ownwnaddons:config.customName.desc":  "Customise your IGN",
-
-
-
-
-  "yacl3.config.ownwnaddons:config.chromaBrightness":  "Chroma Brightness",
-  "yacl3.config.ownwnaddons:config.chromaBrightness.desc":  "Brightness of Fancy Chroma",
-
-  "yacl3.config.ownwnaddons:config.chromaSaturation":  "Chroma Saturation",
-  "yacl3.config.ownwnaddons:config.chromaSaturation.desc":  "Saturation of Fancy Chroma",
-
-  "yacl3.config.ownwnaddons:config.chromaScale":  "Chroma Scale",
-  "yacl3.config.ownwnaddons:config.chromaScale.desc":  "How much each character should change the chroma",
-
-  "yacl3.config.ownwnaddons:config.chromaSpeed":  "Chroma Speed",
-  "yacl3.config.ownwnaddons:config.chromaSpeed.desc":  "How fast the chroma should cycle",
-
-
-  "yacl3.config.ownwnaddons:config.customNameType":  "Name Colour Type",
-  "yacl3.config.ownwnaddons:config.customNameType.desc":  "Customise the way your name is displayed",
-  "yacl3.config.enum.CustomNameType.fancy_chroma": "Fancy Chroma",
-  "yacl3.config.enum.CustomNameType.plain_chroma": "Plain Chroma",
-  "yacl3.config.enum.CustomNameType.solid_colour": "Solid Colour"
+    "yacl3.config.ownwnaddons:config.category.custom_name": "Custom Name",
+    "yacl3.config.ownwnaddons:config.category.chroma": "Chroma",
+    "yacl3.config.ownwnaddons:config.nameColour": "Name Colour",
+    "yacl3.config.ownwnaddons:config.nameColour.desc": "Static colour of your name",
+    "yacl3.config.ownwnaddons:config.customName": "Custom Name",
+    "yacl3.config.ownwnaddons:config.customName.desc": "Customise your IGN",
+    "yacl3.config.ownwnaddons:config.chromaBrightness": "Chroma Brightness",
+    "yacl3.config.ownwnaddons:config.chromaBrightness.desc": "Brightness of Fancy Chroma",
+    "yacl3.config.ownwnaddons:config.chromaSaturation": "Chroma Saturation",
+    "yacl3.config.ownwnaddons:config.chromaSaturation.desc": "Saturation of Fancy Chroma",
+    "yacl3.config.ownwnaddons:config.chromaScale": "Chroma Scale",
+    "yacl3.config.ownwnaddons:config.chromaScale.desc": "How much each character should change the chroma",
+    "yacl3.config.ownwnaddons:config.chromaSpeed": "Chroma Speed",
+    "yacl3.config.ownwnaddons:config.chromaSpeed.desc": "How fast the chroma should cycle",
+    "yacl3.config.ownwnaddons:config.reverseChromaDirection": "Reverse Chroma Direction",
+    "yacl3.config.ownwnaddons:config.reverseChromaDirection.desc": "Reverse the direction the chroma scrolls",
+    "yacl3.config.ownwnaddons:config.customNameType": "Name Colour Type",
+    "yacl3.config.ownwnaddons:config.customNameType.desc": "Customise the way your name is displayed",
+    "yacl3.config.enum.CustomNameType.fancy_chroma": "Fancy Chroma",
+    "yacl3.config.enum.CustomNameType.plain_chroma": "Plain Chroma",
+    "yacl3.config.enum.CustomNameType.solid_colour": "Solid Colour"
 }

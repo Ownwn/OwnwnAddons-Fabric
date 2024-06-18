@@ -17,12 +17,16 @@ class TextUtils {
     }
 
     // include orderedText and mutablelist to save unnecessary openOrderedText()
-    fun replaceOrderedText(originalText: OrderedText, originalTextArray: MutableList<Text>, target: String, replacement: Text): OrderedText {
+    fun replaceOrderedText(
+        originalText: OrderedText,
+        originalTextArray: MutableList<Text>, // list of single letters
+        target: String,
+        replacement: Text
+    ): OrderedText {
 
-         // array of single letters
+
         val targetIndex = originalTextArray.joinToString("") { it.string }.indexOf(target)
         if (targetIndex == -1) return originalText // text does not contain target
-        
 
 
         val replacementString = replacement.string
@@ -48,7 +52,7 @@ class TextUtils {
             }
 
             // whether to replace character
-            if (i > (targetIndex-1) && replacementStrIndex < min(targetLength, replacementString.length)) {
+            if (i > (targetIndex - 1) && replacementStrIndex < min(targetLength, replacementString.length)) {
                 currentStr = replacementString[replacementStrIndex].toString()
 
                 currentStyle = if (replacementStyleHasSiblings) replacement.siblings[replacementStrIndex].style
@@ -66,8 +70,12 @@ class TextUtils {
                     newText.append(Text.literal(replacementString.substring(targetLength)).setStyle(currentStyle))
                 } else {
                     // account for styles of individual chars in replacement
-                    for ((replacementIterator, theChar) in replacementString.substring(targetLength).toCharArray().withIndex()) {
-                        newText.append(Text.literal(theChar.toString()).setStyle(replacement.siblings[replacementIterator+replacementStrIndex].style))
+                    for ((replacementIterator, theChar) in replacementString.substring(targetLength).toCharArray()
+                        .withIndex()) {
+                        newText.append(
+                            Text.literal(theChar.toString())
+                                .setStyle(replacement.siblings[replacementIterator + replacementStrIndex].style)
+                        )
                     }
                 }
 
@@ -94,28 +102,29 @@ class TextUtils {
         val originalTextArray = text.string.toCharArray()
         val newText = Text.empty()
 
-        val nanoHue = getChromaHue()
+        val nanoHue = if (config.reverseChromaDirection) 1 - getChromaHue() else getChromaHue()
 
-        for ((i, thing) in originalTextArray.withIndex()) {
-            val colorOffset = (i * (config.chromaScale/100.0) + nanoHue) % 1.0
-            val colour = Color.getHSBColor((colorOffset).toFloat(), config.chromaSaturation, config.chromaBrightness).rgb
+        for ((i, char) in originalTextArray.withIndex()) {
+            // the difference in colour between each character
+            val colorOffset = (i * (config.chromaScale / 100.0) + nanoHue) % 1.0
+            val colour = Color.getHSBColor(
+                (colorOffset).toFloat(), config.chromaSaturation, config.chromaBrightness
+            ).rgb
 
-            newText.append(Text.literal(thing.toString()).withColor(colour))
+            newText.append(Text.literal(char.toString()).withColor(colour))
         }
         return newText
 
 
     }
-
     private fun getChromaHue(): Float {
         // the time in nanoseconds to cycle the full colour spectrum
-        val cycleTime = (1/(config.chromaSpeed) * 5000000000.0).roundToLong()
+        val cycleTime = (1 / (config.chromaSpeed) * 5000000000.0).roundToLong()
         return ((System.nanoTime() % cycleTime).toFloat() / cycleTime)
     }
 
 
     fun colourSpectrum(): Int {
-        // between 0 and 1, determines the hue
         return Color.getHSBColor(getChromaHue(), 1f, 1f).rgb
     }
 }

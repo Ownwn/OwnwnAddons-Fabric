@@ -7,26 +7,27 @@ import net.minecraft.text.Text
 
 
 class CustomNames {
-    private val config = NewConfig.instance()
+    companion object {
+        private val config = NewConfig.instance()
 
-    fun replaceName(text: OrderedText): OrderedText {
-        val username = MinecraftClient.getInstance().player?.name?.string ?: return text
+        fun replaceName(text: OrderedText): OrderedText {
+            val username = MinecraftClient.getInstance().player?.name?.string ?: return text
 
-        val customName = Text.literal(config.customName)
-        if (customName.string.isEmpty()) return text
+            if (config.customName.isEmpty()) return text
+            val customName = Text.literal(config.customName)
 
-        val originalTextArray = TextUtils().openOrderedText(text)
-        if (!originalTextArray.joinToString("") {it.string}.contains(username)) return text
+            val originalTextArray = TextUtils().openOrderedText(text)
+            if (!originalTextArray.joinToString("") { it.string }.contains(username)) return text
 
-        val newName = when (config.customNameType) {
-            NewConfig.CustomNameType.SOLID_COLOUR -> customName.withColor(config.nameColour.rgb)
-            NewConfig.CustomNameType.PLAIN_CHROMA -> customName.withColor(TextUtils().colourSpectrum())
-            else -> TextUtils().dynamicSpectrum(customName)
+            val newName = when (config.customNameType) {
+                NewConfig.CustomNameType.SOLID_COLOUR -> customName.withColor(config.nameColour.rgb)
+                NewConfig.CustomNameType.PLAIN_CHROMA -> customName.withColor(TextUtils().colourSpectrum())
+                else -> TextUtils().dynamicSpectrum(customName)
+            }
+
+            return TextUtils().replaceOrderedText(text, originalTextArray, username, newName)
         }
-
-        return TextUtils().replaceOrderedText(text, originalTextArray, username, newName)
     }
-
-
-
 }
+
+
