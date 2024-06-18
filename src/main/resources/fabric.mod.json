@@ -11,25 +11,30 @@
 		"homepage": "https://github.com/Ownwn",
 		"sources": "https://github.com/Ownwn/OwnwnAddons-Fabric"
 	},
-	"license": "GPL-3.0",
+	"license": "LGPL-3.0-or-later",
 	"icon": "assets/ownwnaddons/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"com.ownwn.OwnwnAddons"
+		"client": [
+			{
+				"value": "com.ownwn.OwnwnAddonsFabric",
+				"adapter": "kotlin"
+			}
 		],
 		"modmenu": [
-			"com.ownwn.config.ModMenu"
+          "com.ownwn.config.ModMenu"
 		]
 	},
 	"mixins": [
 		"ownwnaddons.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.14.19",
-		"minecraft": "~1.20",
+		"fabricloader": ">=0.15.10",
+		"minecraft": "~1.20.4",
 		"java": ">=17",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"fabric-language-kotlin": ">=1.9.23",
+		"yet_another_config_lib_v3": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

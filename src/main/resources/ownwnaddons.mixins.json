@@ -3,13 +3,7 @@
 	"package": "com.ownwn.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ClientConnectionMixin",
-		"ChatHudMixin",
-      	"HandledScreenMixin",
-		"InGameHudMixin",
-		"DrawContextMixin",
-        "CloseScreenS2CPacketMixin"
-
+		"TextRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
